@@ -1,0 +1,7 @@
+[
+    {
+        "table_name": "costs_result_prd",
+        "schema": "COSTS",
+        "is_partitioned": "false"
+    }
+]

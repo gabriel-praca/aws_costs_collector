@@ -1,0 +1,5 @@
+s3fs
+boto3
+pandas
+awslambdaric
+snowflake-connector-python

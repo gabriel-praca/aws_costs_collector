@@ -1,0 +1,25 @@
+{
+  "fetch": {
+    "start_date": "2021-01-01",
+    "end_date": ""
+  },
+  "aws": {
+    "enable": true,
+    "tag_key": "businessnote",
+    "multiply_factor_enable": false,
+    "multiply_factor_amount": 1,
+    "multiply_factor_unit": "USD"
+  },
+  "snowflake": {
+    "enable": true,
+    "account":"<*your_account*>",
+    "multiply_factor_enable": true,
+    "multiply_factor_amount": 3,
+    "multiply_factor_unit": "USD"
+  },
+  "databricks":{
+    "account_id": "",
+    "credentials_id": "",
+    "storage_configuration_id": ""
+  }
+}

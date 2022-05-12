@@ -1,0 +1,23 @@
+
+    /* set configurations */
+    use role CLOUD_COSTS;
+    use warehouse CLOUD_COSTS;
+    use database UTIL_DB;
+    use schema COSTS;
+
+    create file format if not exists FF_PARQUET type = 'parquet' compression = 'auto' binary_as_text = true;
+
+    
+        drop external table if exists COSTS.costs_result_dev;
+        create external table COSTS.costs_result_dev ( date date as (value:date::date),topic varchar as (value:topic::varchar),resource varchar as (value:resource::varchar),environment varchar as (value:environment::varchar),amount decimal(19,5) as (value:amount::decimal(19,5)),unit varchar as (value:unit::varchar) )
+        with location = @CLOUD_COSTS/costs_result_dev/
+        auto_refresh = true
+        file_format = FF_PARQUET
+        ;
+        
+        drop external table if exists COSTS.costs_result_prd;
+        create external table COSTS.costs_result_prd ( date date as (value:date::date),topic varchar as (value:topic::varchar),resource varchar as (value:resource::varchar),environment varchar as (value:environment::varchar),amount decimal(19,5) as (value:amount::decimal(19,5)),unit varchar as (value:unit::varchar) )
+        with location = @CLOUD_COSTS_PROD/costs_result_prd/
+        auto_refresh = true
+        file_format = FF_PARQUET
+        ;

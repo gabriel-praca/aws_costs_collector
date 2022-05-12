@@ -1,0 +1,35 @@
+{
+    "input_path" : "internal/costs",
+    "scan_for_latest" : true,
+    "read_options" : {
+        "format" : "csv", 
+        "sep" : ",",
+        "inferSchema" : false,
+        "header" : true
+    },
+    "col_names" : [
+        "date"
+        ,"topic"
+        ,"resource"
+        ,"environment"
+        ,"amount"
+        ,"unit"
+    ], 
+    "trim_cols" : true,
+    "cast" :
+    {
+        "string": [
+            "topic"
+            ,"resource"
+            ,"environment"
+            ,"unit"
+        ],
+        "decimal(19,5)": ["amount"],
+        "date": ["date"]
+    },
+    "output_path" : "internal/costs/costs_result_dev", 
+    "write_options" : { 
+        "format" : "parquet", 
+        "mode" : "overwrite"
+    }
+}
